@@ -25,6 +25,12 @@ jobs:
         echo "Iniciando Login"
         docker login -u $docker_login -p $docker_password
         echo "Fin de login"
+    - name: Build Docker Image
+      run: |
+        docker build -t wernerct/redes2web:flaskv2 .
+    - name: Push Docker Image
+      run: |
+        docker push wernerct/redes2web:flaskv2
 #    - uses: actions/checkout@v4
 #    - name: Build the Docker image
 #      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
